@@ -263,8 +263,8 @@ function updateCodeDisplay() {
             indentLevel++;
         }
         
-        // Reset indent after events to prepare for next event
-        if (blockDef.type === 'event' && index < blocks.length - 1) {
+        // Reset indent when next block is an event or at end of blocks
+        if (index < blocks.length - 1) {
             const nextBlockDef = findBlockDefinition(blocks[index + 1].dataset.blockId);
             if (nextBlockDef && nextBlockDef.type === 'event') {
                 indentLevel = 0;
@@ -308,27 +308,4 @@ function copyCode() {
     });
 }
 
-// Handle block connections and nesting
-function setupBlockConnections() {
-    const workspace = document.getElementById('workspace');
-    const blocks = workspace.querySelectorAll('.block');
-    
-    blocks.forEach(block => {
-        block.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const draggingBlock = document.querySelector('.dragging');
-            if (draggingBlock && draggingBlock !== block) {
-                const rect = block.getBoundingClientRect();
-                const midpoint = rect.top + rect.height / 2;
-                
-                if (e.clientY < midpoint) {
-                    block.parentNode.insertBefore(draggingBlock, block);
-                } else {
-                    block.parentNode.insertBefore(draggingBlock, block.nextSibling);
-                }
-            }
-        });
-    });
-}
+
