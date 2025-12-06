@@ -274,21 +274,21 @@ const blockDefinitions = {
         },
         {
             id: 'loop-player',
-            type: 'expression',
+            type: 'loop',
             label: 'loop-player',
             code: 'loop-player',
             inputs: []
         },
         {
             id: 'loop-block',
-            type: 'expression',
+            type: 'loop',
             label: 'loop-block',
             code: 'loop-block',
             inputs: []
         },
         {
             id: 'loop-value',
-            type: 'expression',
+            type: 'loop',
             label: 'loop-value',
             code: 'loop-value',
             inputs: []

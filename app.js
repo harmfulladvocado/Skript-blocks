@@ -307,5 +307,3 @@ function copyCode() {
         alert('Failed to copy code to clipboard');
     });
 }
-
-
